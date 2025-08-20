@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, abort
 
 app = Flask(__name__)
 
-news = {[{"id": 0, "title": , "content": ""}]}
+news = {[{"id": 0, "title": "" , "content": ""}]}
 next_id = 1
 
 @app.route("/", methods=["GET"])
