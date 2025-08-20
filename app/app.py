@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, abort
 
 app = Flask(__name__)
 
-news = {[{"id": 0, "title": "" , "content": ""}]}
+news = [{"id": 0, "title": "" , "content": ""}]
 next_id = 1
 
 @app.route("/", methods=["GET"])
@@ -15,12 +15,12 @@ def list_news():
 
 @app.route("/news", methods=["POST"])
 def create_news():
-    data = request.jsonify
+    data = request.json
     return jsonify(data), 201
 
 @app.route("/news/<int:item_id>", methods=["PUT"])
 def update_news(item_id: int):
-    item = news [item_id]
+    item = news[item_id]
     data = request.json
     for key in ("title", "content"):
         if key in data:
@@ -29,7 +29,7 @@ def update_news(item_id: int):
 
 @app.route("/news/<int:item_id>", methods=["DELETE"])
 def delete_news(item_id: int):
-    del news [item_id]
+    del news[item_id]
     return jsonify({"status": "deleted", "id": item_id}) 
 
 if __name__ == "__main__":
