@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request, abort
 
 app = Flask(__name__)
 
+all_my_news = [{"id": 0, "title": "AAAA"}]
+
 news = [{"id": 0, "title": "" , "content": ""}]
 next_id = 1
 
